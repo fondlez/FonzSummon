@@ -2,7 +2,7 @@
 ## Title: FonzSummon
 ## Notes: Chat messages during Warlock summoning
 ## Author: fondlez
-## Version: 0.2.2
+## Version: 1.0.0
 ## X-Website: http://github.com
 ## OptionalDeps: Ace2
 ## SavedVariables: FonzSummonDB
