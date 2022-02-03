@@ -1,0 +1,20 @@
+## Interface: 11200
+## Title: FonzSummon
+## Notes: Chat messages during Warlock summoning
+## Author: fondlez
+## Version: 0.2.2
+## X-Website: http://github.com
+## DefaultState: disabled
+## OptionalDeps: Ace2
+## SavedVariables: FonzSummonDB
+
+libs\embeds.xml
+locales\locales.xml
+
+base.lua
+mods\util\package.lua
+mods\util\string.lua
+mods\util\bag.lua
+mods\util\chat.lua
+mods\warlock.lua
+core.lua
