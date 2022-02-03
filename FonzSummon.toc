@@ -4,7 +4,6 @@
 ## Author: fondlez
 ## Version: 0.2.2
 ## X-Website: http://github.com
-## DefaultState: disabled
 ## OptionalDeps: Ace2
 ## SavedVariables: FonzSummonDB
 
