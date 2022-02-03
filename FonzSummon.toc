@@ -3,7 +3,7 @@
 ## Notes: Chat messages during Warlock summoning
 ## Author: fondlez
 ## Version: 1.0.0
-## X-Website: http://github.com
+## X-Website: http://github.com/fondlez
 ## OptionalDeps: Ace2
 ## SavedVariables: FonzSummonDB
 
