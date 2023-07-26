@@ -1,6 +1,7 @@
 ## Interface: 11200
 ## Title: FonzSummon
 ## Notes: Chat messages during Warlock summoning
+## Notes-ruRU: Сообщения в чате во время призыва Чернокнижника
 ## Author: fondlez
 ## Version: 1.0.0
 ## X-Website: http://github.com/fondlez

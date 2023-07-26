@@ -1,6 +1,6 @@
 --[[
 	Name: Tablet-2.0
-	Revision: $Rev: 17880 $
+	Revision: $Rev: 20636 $
 	Author(s): ckknight (ckknight@gmail.com)
 	Website: http://ckknight.wowinterface.com/
 	Documentation: http://wiki.wowace.com/index.php/Tablet-2.0
@@ -10,12 +10,27 @@
 ]]
 
 local MAJOR_VERSION = "Tablet-2.0"
-local MINOR_VERSION = "$Revision: 17880 $"
+local MINOR_VERSION = "$Revision: 20636 $"
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:IsNewVersion(MAJOR_VERSION, MINOR_VERSION) then return end
 
 local DEBUG = false
+
+
+local SCROLL_UP = "Scroll up"
+local SCROLL_DOWN = "Scroll down"
+local HINT = "Hint"
+local DETACH = "Detach"
+local DETACH_DESC = "Detach the tablet from its source."
+local SIZE = "Size"
+local SIZE_DESC = "Scale the tablet."
+local CLOSE_MENU = "Close menu"
+local CLOSE_MENU_DESC = "Close the menu."
+local COLOR = "Background color"
+local COLOR_DESC = "Set the background color."
+local LOCK = "Lock"
+local LOCK_DESC = "Lock the tablet in its current position. Alt+Right-click for menu or Alt+drag to drag it when locked."
 
 if GetLocale() == "deDE" then
 	SCROLL_UP = "Hochscrollen"
@@ -101,20 +116,6 @@ elseif GetLocale() == "frFR" then
 	COLOR_DESC = "Permet de d\195\169finir la couleur du fond."
 	LOCK = "Bloquer"
 	LOCK_DESC = "Bloque le tableau \195\160 sa position actuelle. Alt+clic-droit pour le menu ou Alt+glisser pour le d\195\169placer quand il est bloqu\195\169."
-else
-	SCROLL_UP = "Scroll up"
-	SCROLL_DOWN = "Scroll down"
-	HINT = "Hint"
-	DETACH = "Detach"
-	DETACH_DESC = "Detach the tablet from its source."
-	SIZE = "Size"
-	SIZE_DESC = "Scale the tablet."
-	CLOSE_MENU = "Close menu"
-	CLOSE_MENU_DESC = "Close the menu."
-	COLOR = "Background color"
-	COLOR_DESC = "Set the background color."
-	LOCK = "Lock"
-	LOCK_DESC = "Lock the tablet in its current position. Alt+Right-click for menu or Alt+drag to drag it when locked."
 end
 
 local start = GetTime()
@@ -215,37 +216,37 @@ function new(k1, v1, k2, v2, k3, v3, k4, v4, k5, v5, k6, v6, k7, v7, k8, v8, k9,
 		t = {}
 	end
 	if k1 then t[k1] = v1
-		if k2 then t[k2] = v2
-			if k3 then t[k3] = v3
-				if k4 then t[k4] = v4
-					if k5 then t[k5] = v5
-						if k6 then t[k6] = v6
-							if k7 then t[k7] = v7
-								if k8 then t[k8] = v8
-									if k9 then t[k9] = v9
-										if k10 then t[k10] = v10
-											if k11 then t[k11] = v11
-												if k12 then t[k12] = v12
-													if k13 then t[k13] = v13
-														if k14 then t[k14] = v14
-															if k15 then t[k15] = v15
-																if k16 then t[k16] = v16
-																	if k17 then t[k17] = v17
-																		if k18 then t[k18] = v18
-																			if k19 then t[k19] = v19
-																				if k20 then t[k20] = v20
-																					if k21 then t[k21] = v21
-																						if k22 then t[k22] = v22
-																							if k23 then t[k23] = v23
-																								if k24 then t[k24] = v24
-																									if k25 then t[k25] = v25
-																										if k26 then t[k26] = v26
-																											if k27 then t[k27] = v27
-																												if k28 then t[k28] = v28
-																													if k29 then t[k29] = v29
-																														if k30 then t[k30] = v30
-																														end end end end end end end end end end end end end end end end end end end end end end end end end end end end end end
-																														return t
+	if k2 then t[k2] = v2
+	if k3 then t[k3] = v3
+	if k4 then t[k4] = v4
+	if k5 then t[k5] = v5
+	if k6 then t[k6] = v6
+	if k7 then t[k7] = v7
+	if k8 then t[k8] = v8
+	if k9 then t[k9] = v9
+	if k10 then t[k10] = v10
+	if k11 then t[k11] = v11
+	if k12 then t[k12] = v12
+	if k13 then t[k13] = v13
+	if k14 then t[k14] = v14
+	if k15 then t[k15] = v15
+	if k16 then t[k16] = v16
+	if k17 then t[k17] = v17
+	if k18 then t[k18] = v18
+	if k19 then t[k19] = v19
+	if k20 then t[k20] = v20
+	if k21 then t[k21] = v21
+	if k22 then t[k22] = v22
+	if k23 then t[k23] = v23
+	if k24 then t[k24] = v24
+	if k25 then t[k25] = v25
+	if k26 then t[k26] = v26
+	if k27 then t[k27] = v27
+	if k28 then t[k28] = v28
+	if k29 then t[k29] = v29
+	if k30 then t[k30] = v30
+	end end end end end end end end end end end end end end end end end end end end end end end end end end end end end end
+	return t
 end
 local tmp
 tmp = setmetatable({}, {__index = function(self, key)
@@ -255,37 +256,37 @@ tmp = setmetatable({}, {__index = function(self, key)
 			t[k] = nil
 		end
 		if k1 then t[k1] = v1
-			if k2 then t[k2] = v2
-				if k3 then t[k3] = v3
-					if k4 then t[k4] = v4
-						if k5 then t[k5] = v5
-							if k6 then t[k6] = v6
-								if k7 then t[k7] = v7
-									if k8 then t[k8] = v8
-										if k9 then t[k9] = v9
-											if k10 then t[k10] = v10
-												if k11 then t[k11] = v11
-													if k12 then t[k12] = v12
-														if k13 then t[k13] = v13
-															if k14 then t[k14] = v14
-																if k15 then t[k15] = v15
-																	if k16 then t[k16] = v16
-																		if k17 then t[k17] = v17
-																			if k18 then t[k18] = v18
-																				if k19 then t[k19] = v19
-																					if k20 then t[k20] = v20
-																						if k21 then t[k21] = v21
-																							if k22 then t[k22] = v22
-																								if k23 then t[k23] = v23
-																									if k24 then t[k24] = v24
-																										if k25 then t[k25] = v25
-																											if k26 then t[k26] = v26
-																												if k27 then t[k27] = v27
-																													if k28 then t[k28] = v28
-																														if k29 then t[k29] = v29
-																															if k30 then t[k30] = v30
-																															end end end end end end end end end end end end end end end end end end end end end end end end end end end end end end
-																															return t
+		if k2 then t[k2] = v2
+		if k3 then t[k3] = v3
+		if k4 then t[k4] = v4
+		if k5 then t[k5] = v5
+		if k6 then t[k6] = v6
+		if k7 then t[k7] = v7
+		if k8 then t[k8] = v8
+		if k9 then t[k9] = v9
+		if k10 then t[k10] = v10
+		if k11 then t[k11] = v11
+		if k12 then t[k12] = v12
+		if k13 then t[k13] = v13
+		if k14 then t[k14] = v14
+		if k15 then t[k15] = v15
+		if k16 then t[k16] = v16
+		if k17 then t[k17] = v17
+		if k18 then t[k18] = v18
+		if k19 then t[k19] = v19
+		if k20 then t[k20] = v20
+		if k21 then t[k21] = v21
+		if k22 then t[k22] = v22
+		if k23 then t[k23] = v23
+		if k24 then t[k24] = v24
+		if k25 then t[k25] = v25
+		if k26 then t[k26] = v26
+		if k27 then t[k27] = v27
+		if k28 then t[k28] = v28
+		if k29 then t[k29] = v29
+		if k30 then t[k30] = v30
+		end end end end end end end end end end end end end end end end end end end end end end end end end end end end end end
+		return t
 	end
 	return tmp[key]
 end})
@@ -484,6 +485,8 @@ do
 				'textB', self.textB or 1,
 				'fakeChild', true,
 				'func', self.func,
+				'onEnterFunc', self.onEnterFunc,
+				'onLeaveFunc', self.onLeaveFunc,
 				'arg1', info.arg1,
 				'arg2', self.arg2,
 				'arg3', self.arg3,
@@ -1008,6 +1011,9 @@ local function button_OnEnter()
 		this.self:GetScript("OnEnter")()
 	end
 	this.highlight:Show()
+	if this.onEnterFunc then
+		this.onEnterFunc()
+	end
 end
 
 local function button_OnLeave()
@@ -1015,6 +1021,9 @@ local function button_OnLeave()
 		this.self:GetScript("OnLeave")()
 	end
 	this.highlight:Hide()
+	if this.onLeaveFunc then
+		this.onLeaveFunc()
+	end
 end
 
 local function NewLine(self)
@@ -1254,6 +1263,7 @@ local function AcquireFrame(self, registration, data, detachedData)
 		function tooltip:Hide(newOwner)
 			if self == tooltip or newOwner == nil then
 				old_tooltip_Hide(self)
+				return
 			end
 			self:ClearLines(true)
 			self.owner = nil
@@ -1652,6 +1662,80 @@ local function AcquireFrame(self, registration, data, detachedData)
 					end
 					Tablet:assert(type(func) == "function", "func must be a function or method")
 					button.func = func
+					local onEnterFunc = info.onEnterFunc
+					if onEnterFunc then
+						if type(onEnterFunc) == "string" then
+							if type(info.onEnterArg1) ~= "table" then
+								Tablet:error("Cannot call method " .. info.onEnterFunc .. " on a non-table")
+							end
+							onEventFunc = info.onEnterArg1[onEnterFunc]
+							if type(onEnterFunc) ~= "function" then
+								Tablet:error("Method " .. info.onEnterFunc .. " nonexistant")
+							end
+						else
+							if type(onEnterFunc) ~= "function" then
+								Tablet:error("func must be a function or method")
+							end
+						end
+						button.onEnterFunc = onEnterFunc
+						local i = 1
+						while true do
+							local k = 'onEnterArg' .. i
+							if button[k] ~= nil then
+								button[k] = nil
+							else
+								break
+							end
+							i = i + 1
+						end
+						i = 1
+						while true do
+							local k = 'onEnterArg' .. i
+							local v = info[k]
+							if v == nil then
+								break
+							end
+							button[k] = v
+							i = i + 1
+						end
+					end
+					local onLeaveFunc = info.onLeaveFunc
+					if onLeaveFunc then
+						if type(onLeaveFunc) == "string" then
+							if type(info.onLeaveArg1) ~= "table" then
+								Tablet:error("Cannot call method " .. info.onLeaveFunc .. " on a non-table")
+							end
+							onLeaveFunc = info.onLeaveArg1[onLeaveFunc]
+							if type(onLeaveFunc) ~= "function" then
+								Tablet:error("Method " .. info.onLeaveFunc .. " nonexistant")
+							end
+						else
+							if type(onLeaveFunc) ~= "function" then
+								Tablet:error("func must be a function or method")
+							end
+						end
+						button.onLeaveFunc = onLeaveFunc
+						local i = 1
+						while true do
+							local k = 'onLeaveArg' .. i
+							if button[k] ~= nil then
+								button[k] = nil
+							else
+								break
+							end
+							i = i + 1
+						end
+						i = 1
+						while true do
+							local k = 'onLeaveArg' .. i
+							local v = info[k]
+							if v == nil then
+								break
+							end
+							button[k] = v
+							i = i + 1
+						end
+					end
 					button.a1 = info.arg1
 					button.a2 = info.arg2
 					button.a3 = info.arg3
@@ -1692,7 +1776,7 @@ local function AcquireFrame(self, registration, data, detachedData)
 			end
 			self.fontSizePercent = percent
 			if data then
-				data.fontSizePercent = percent
+				data.fontSizePercent = percent ~= 1 and percent or nil
 			end
 			self.scrollUp:SetFont(font, normalSize * self.fontSizePercent, flags)
 			self.scrollDown:SetFont(font, normalSize * self.fontSizePercent, flags)
@@ -1908,12 +1992,15 @@ function AcquireDetachedFrame(self, registration, data, detachedData)
 	if not tooltip then
 		AcquireFrame(self, {})
 	end
-	local detached = CreateFrame("Frame", "Tablet20DetachedFrame" .. (table.getn(detachedTooltips) + 1), UIParent)
+	local frameName = "Tablet20DetachedFrame" .. (table.getn(detachedTooltips) + 1)
+	local detached = CreateFrame("Frame", frameName, UIParent)
 	table.insert(detachedTooltips, detached)
+	tinsert(UISpecialFrames, frameName);	
 	detached.notInUse = true
 	detached:EnableMouse(not data.locked)
 	detached:EnableMouseWheel(true)
 	detached:SetMovable(true)
+	-- tinsert(UISpecialFrames, frameName);
 	detached:SetPoint(data.anchor or "CENTER", UIParent, data.anchor or "CENTER", data.offsetx or 0, data.offsety or 0)
 
 	detached.numLines = 0
